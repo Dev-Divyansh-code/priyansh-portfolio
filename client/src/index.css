@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-title: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-xred: #fd1e1f;
+  --color-xblue: #0015d4;
+  --color-xyellow: #fbcb41;
+  --color-xpink: #ff8fca;
+  --color-xblank: #f6f5f1;
+  --color-xbg: #ececec;
+  --color-xghostwhite: #f8f8ff;
+  --color-xstroke: #0b1215;
+  --color-xghoststroke: #848484;
+  --color-xline: #d3d3d3;
+  --color-xarrow: #e4e3dd;
+  --color-xcyan: #84def9;
+  --color-blank: #fffffe;
+  --color-xsurface: #ffffff;
+  --color-xsurface-muted: #e5e7eb;
+
+  --radius-cxl: 40px;
+  --radius-mxl: 44px;
+
+  --spacing-15: 3.75rem;
+  --spacing-10_5: 2.625rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html[data-theme='midnight'] {
+  --color-xred: #f85149;
+  --color-xblue: #58a6ff;
+  --color-xyellow: #d4a72c;
+  --color-xpink: #db61a2;
+  --color-xblank: #0d1117;
+  --color-xbg: #161b22;
+  --color-xghostwhite: #1c2128;
+  --color-xstroke: #e6edf3;
+  --color-xghoststroke: #8b949e;
+  --color-xline: #30363d;
+  --color-xarrow: #21262d;
+  --color-xcyan: #39c5cf;
+  --color-blank: #e6edf3;
+  --color-xsurface: #161b22;
+  --color-xsurface-muted: #30363d;
+}
+
+html[data-theme='noir'] {
+  --color-xred: #c45c5c;
+  --color-xblue: #c9a227;
+  --color-xyellow: #e8c547;
+  --color-xpink: #8b7355;
+  --color-xblank: #0a0a0a;
+  --color-xbg: #141414;
+  --color-xghostwhite: #1a1a1a;
+  --color-xstroke: #f5f5f0;
+  --color-xghoststroke: #a0a0a0;
+  --color-xline: #2a2a2a;
+  --color-xarrow: #1f1f1f;
+  --color-xcyan: #7eb8c9;
+  --color-blank: #f5f5f0;
+  --color-xsurface: #141414;
+  --color-xsurface-muted: #2a2a2a;
+}
+
+html[data-theme='ocean'] {
+  --color-xred: #e63946;
+  --color-xblue: #0077b6;
+  --color-xyellow: #48cae4;
+  --color-xpink: #90e0ef;
+  --color-xblank: #e8f4f8;
+  --color-xbg: #d0e8f0;
+  --color-xghostwhite: #f0f9fc;
+  --color-xstroke: #0a2540;
+  --color-xghoststroke: #5a7a8a;
+  --color-xline: #b8d4e0;
+  --color-xarrow: #c5dde8;
+  --color-xcyan: #00b4d8;
+  --color-blank: #ffffff;
+  --color-xsurface: #ffffff;
+  --color-xsurface-muted: #d0e8f0;
+}
+
+html[data-theme='sunset'] {
+  --color-xred: #ff4757;
+  --color-xblue: #ff6b35;
+  --color-xyellow: #ffc857;
+  --color-xpink: #e84393;
+  --color-xblank: #1a1025;
+  --color-xbg: #251535;
+  --color-xghostwhite: #2a1a35;
+  --color-xstroke: #fff0e6;
+  --color-xghoststroke: #b8a0b0;
+  --color-xline: #3d2848;
+  --color-xarrow: #2d1f38;
+  --color-xcyan: #ff8fab;
+  --color-blank: #fff0e6;
+  --color-xsurface: #251535;
+  --color-xsurface-muted: #3d2848;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-xblank);
+  color: var(--color-xstroke);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: contain;
+}
+
+/* Improve touch targets */
+button, a {
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, textarea, select {
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  /* Reduce motion on mobile for performance */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.link:hover {
+  color: var(--color-xblue);
+}
+
+/* Safe area insets for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .page-content {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
