@@ -5,7 +5,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { connectDB } from './config/db.js';
-import { uploadsDir } from './middleware/upload.js';
 import { ensureSeed } from './seed/ensureSeed.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import apiRoutes from './routes/api.js';
@@ -29,7 +28,11 @@ app.use(
   }),
 );
 app.use(express.json({ limit: '1mb' }));
-app.use('/uploads', express.static(uploadsDir));
+
+const legacyUploadsDir = path.resolve(__dirname, 'uploads');
+if (fs.existsSync(legacyUploadsDir)) {
+  app.use('/uploads', express.static(legacyUploadsDir));
+}
 
 app.use('/api', apiRoutes);
 

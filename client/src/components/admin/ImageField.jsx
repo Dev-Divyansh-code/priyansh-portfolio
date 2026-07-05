@@ -6,9 +6,9 @@ export default function ImageField({
   label,
   value,
   onChange,
-  placeholder = 'https://... or /uploads/...',
+  placeholder = 'https://... or upload from device',
   required = false,
-  hint = 'Paste an image link or upload from your device',
+  hint = 'Paste an image link or upload from your device. Uploads are saved to your database and survive redeploys.',
 }) {
   const fileRef = useRef(null);
   const [uploading, setUploading] = useState(false);
