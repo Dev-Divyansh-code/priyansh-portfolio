@@ -5,8 +5,8 @@ services:
     plan: free
     repo: https://github.com/Dev-Divyansh-code/priyansh-portfolio
     branch: main
-    buildCommand: npm install && npm run install:all && npm run build
-    startCommand: npm start
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm run start --prefix server
     healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
