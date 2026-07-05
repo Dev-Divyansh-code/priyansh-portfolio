@@ -32,7 +32,7 @@ export default function AdminLogin() {
   return (
     <div className="relative flex min-h-dvh items-center justify-center bg-xblank px-4">
       <div className="absolute top-4 right-4">
-        <ThemeSwitcher />
+        <ThemeSwitcher variant="surface" />
       </div>
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">

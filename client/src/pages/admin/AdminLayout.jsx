@@ -25,11 +25,11 @@ export default function AdminLayout() {
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div>
             <h1 className="font-title text-lg font-semibold text-xheader-text">Priyansh Admin</h1>
-            <p className="text-xs text-xghoststroke">Portfolio content manager</p>
+            <p className="text-xs text-xheader-text/70">Portfolio content manager</p>
           </div>
           <div className="flex items-center gap-3">
-            <ThemeSwitcher />
-            <a href="/" target="_blank" rel="noreferrer" className="text-sm text-xghoststroke hover:text-xyellow">
+            <ThemeSwitcher variant="inverse" />
+            <a href="/" target="_blank" rel="noreferrer" className="text-sm text-xheader-text/80 hover:text-xyellow">
               View site ↗
             </a>
             <button

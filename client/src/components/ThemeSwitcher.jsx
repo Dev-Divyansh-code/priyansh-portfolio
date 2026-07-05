@@ -37,11 +37,20 @@ function ThemeOptions({ themes, theme, onSelect }) {
   );
 }
 
-export default function ThemeSwitcher({ compact = false }) {
+const triggerVariants = {
+  default: 'text-xstroke hover:text-xblue',
+  inverse:
+    'border border-xheader-text/35 bg-white/10 text-xheader-text hover:border-xheader-text/50 hover:bg-white/15 hover:text-xyellow',
+  surface:
+    'border border-xline bg-xsurface text-xstroke shadow-sm hover:border-xblue hover:text-xblue',
+};
+
+export default function ThemeSwitcher({ compact = false, variant = 'default' }) {
   const { theme, setTheme, themes } = useTheme();
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
   const sheetRef = useRef(null);
+  const triggerClass = triggerVariants[variant] ?? triggerVariants.default;
 
   function selectTheme(themeId) {
     setTheme(themeId);
@@ -127,9 +136,9 @@ export default function ThemeSwitcher({ compact = false }) {
         aria-label="Change theme"
         aria-expanded={open}
         aria-haspopup="menu"
-        className={`flex items-center justify-center gap-1.5 rounded-full font-title text-sm font-semibold text-xstroke transition-all hover:text-xblue active:scale-95 ${
+        className={`flex items-center justify-center gap-1.5 rounded-full font-title text-sm font-semibold transition-all active:scale-95 ${
           compact ? 'px-2 py-2' : 'px-3 py-2'
-        }`}
+        } ${triggerClass}`}
       >
         <Icon icon="mdi:palette" className="text-base" />
         {!compact && <span className="hidden sm:inline">{active?.name}</span>}
