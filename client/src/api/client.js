@@ -7,4 +7,5 @@ const api = axios.create({
 export const fetchProfile = () => api.get('/profile').then((r) => r.data);
 export const fetchWorks = () => api.get('/works').then((r) => r.data);
 export const fetchProjects = () => api.get('/projects').then((r) => r.data);
-export const sendContact = (data) => api.post('/contact', data).then((r) => r.data);
+export const sendContact = (data) =>
+  api.post('/contact', data, { timeout: 60000 }).then((r) => r.data);

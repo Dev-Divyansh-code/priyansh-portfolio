@@ -150,6 +150,13 @@ body {
   overscroll-behavior-y: contain;
 }
 
+/* Keep reveal targets usable if scroll animations do not run */
+[data-reveal-item],
+[data-section-header] {
+  opacity: 1;
+  transform: none;
+}
+
 /* Improve touch targets */
 button, a {
   touch-action: manipulation;

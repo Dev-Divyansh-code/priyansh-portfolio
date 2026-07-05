@@ -38,8 +38,8 @@ export function AdminButton({ variant = 'primary', className = '', children, ...
 
   return (
     <button
-      type="button"
       className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-50 ${variants[variant]} ${className}`}
+      type="button"
       {...props}
     >
       {children}

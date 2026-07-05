@@ -74,31 +74,37 @@ export function useSectionReveal() {
       const items = ref.current?.querySelectorAll('[data-reveal-item]');
 
       // Animate header on all devices
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
       if (header) {
         gsap.from(header, {
-          scrollTrigger: { 
-            trigger: ref.current, 
-            start: isMobile ? 'top 90%' : 'top 80%' 
+          scrollTrigger: {
+            trigger: ref.current,
+            start: isMobile ? 'top 90%' : 'top 80%',
+            once: true,
           },
           opacity: 0,
           y: isMobile ? 25 : 40,
           duration: isMobile ? 0.6 : 0.9,
           ease: 'power3.out',
+          clearProps: 'opacity,transform',
         });
       }
 
-      // Animate items on all devices
       if (items?.length) {
         gsap.from(items, {
-          scrollTrigger: { 
-            trigger: ref.current, 
-            start: isMobile ? 'top 85%' : 'top 75%' 
+          scrollTrigger: {
+            trigger: ref.current,
+            start: isMobile ? 'top 85%' : 'top 75%',
+            once: true,
           },
           opacity: 0,
           y: isMobile ? 30 : 50,
           duration: isMobile ? 0.5 : 0.7,
           stagger: isMobile ? 0.08 : 0.12,
           ease: 'power3.out',
+          clearProps: 'opacity,transform',
         });
       }
     },
