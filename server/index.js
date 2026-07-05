@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { connectDB } from './config/db.js';
+import { ensureSeed } from './seed/ensureSeed.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import apiRoutes from './routes/api.js';
 
@@ -58,6 +59,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 await connectDB();
+await ensureSeed();
 
 function startServer(port) {
   const server = app.listen(port, () => {

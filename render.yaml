@@ -3,8 +3,11 @@ services:
     name: priyansh-portfolio
     runtime: node
     plan: free
+    repo: https://github.com/Dev-Divyansh-code/priyansh-portfolio
+    branch: main
     buildCommand: npm install && npm run install:all && npm run build
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
