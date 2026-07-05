@@ -50,7 +50,7 @@ priyansh-mern/
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/divyansht111/priyansh-portfolio.git
+git clone https://github.com/Dev-Divyansh-code/priyansh-portfolio.git
 cd priyansh-portfolio
 
 # 2. Install dependencies (root, server, and client)
