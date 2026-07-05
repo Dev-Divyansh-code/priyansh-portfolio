@@ -9,7 +9,7 @@ export async function getProfile(_req, res) {
 }
 
 export async function updateProfile(req, res) {
-  const allowed = ['name', 'title', 'tagline', 'location', 'portrait', 'about', 'socials'];
+  const allowed = ['name', 'title', 'tagline', 'location', 'portrait', 'portraitVideo', 'about', 'socials'];
   const updates = {};
 
   for (const key of allowed) {

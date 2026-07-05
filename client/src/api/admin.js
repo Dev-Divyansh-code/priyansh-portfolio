@@ -65,6 +65,17 @@ export async function adminUploadImage(file) {
   formData.append('image', file);
   const res = await client.post('/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 120000,
+  });
+  return res.data;
+}
+
+export async function adminUploadVideo(file) {
+  const formData = new FormData();
+  formData.append('video', file);
+  const res = await client.post('/upload/video', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 300000,
   });
   return res.data;
 }

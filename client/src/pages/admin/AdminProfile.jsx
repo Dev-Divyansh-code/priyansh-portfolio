@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminGetProfile, adminUpdateProfile } from '../../api/admin';
 import ImageField from '../../components/admin/ImageField';
+import VideoField from '../../components/admin/VideoField';
 import { AdminAlert, AdminButton, AdminCard, AdminInput, AdminLabel, AdminTextarea } from '../../components/admin/AdminUI';
 
 const emptyForm = {
@@ -9,6 +10,7 @@ const emptyForm = {
   tagline: '',
   location: '',
   portrait: '',
+  portraitVideo: '',
   about: '',
   email: '',
   instagram: '',
@@ -31,6 +33,7 @@ export default function AdminProfile() {
           tagline: p.tagline || '',
           location: p.location || '',
           portrait: p.portrait || '',
+          portraitVideo: p.portraitVideo || '',
           about: (p.about || []).join('\n'),
           email: p.socials?.email || '',
           instagram: p.socials?.instagram || '',
@@ -58,6 +61,7 @@ export default function AdminProfile() {
         tagline: form.tagline,
         location: form.location,
         portrait: form.portrait,
+        portraitVideo: form.portraitVideo,
         about: form.about.split('\n').map((s) => s.trim()).filter(Boolean),
         socials: {
           email: form.email,
@@ -108,6 +112,13 @@ export default function AdminProfile() {
                 value={form.portrait}
                 onChange={(portrait) => setForm({ ...form, portrait })}
                 placeholder="/assets/images/portrait.webp or https://..."
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <VideoField
+                label="Portrait video (flip on click)"
+                value={form.portraitVideo}
+                onChange={(portraitVideo) => setForm({ ...form, portraitVideo })}
               />
             </div>
           </div>

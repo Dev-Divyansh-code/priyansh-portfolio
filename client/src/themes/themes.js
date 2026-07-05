@@ -31,7 +31,7 @@ export const THEMES = [
   },
 ];
 
-export const DEFAULT_THEME = 'classic';
+export const DEFAULT_THEME = 'ocean';
 export const STORAGE_KEY = 'priyansh-theme';
 
 export function isValidTheme(id) {

@@ -7,6 +7,7 @@ const profileSchema = new mongoose.Schema(
     tagline: { type: String, required: true },
     location: { type: String, default: 'IND' },
     portrait: { type: String, default: '/assets/portrait.webp' },
+    portraitVideo: { type: String, default: '' },
     about: [{ type: String }],
     socials: {
       email: String,

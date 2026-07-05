@@ -13,3 +13,17 @@ export const uploadImage = multer({
   fileFilter,
   limits: { fileSize: 5 * 1024 * 1024 },
 }).single('image');
+
+function videoFilter(_req, file, cb) {
+  if (file.mimetype.startsWith('video/')) {
+    cb(null, true);
+    return;
+  }
+  cb(new Error('Only video files are allowed'));
+}
+
+export const uploadVideo = multer({
+  storage: multer.memoryStorage(),
+  fileFilter: videoFilter,
+  limits: { fileSize: 50 * 1024 * 1024 },
+}).single('video');

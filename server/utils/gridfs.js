@@ -10,7 +10,7 @@ function getBucket() {
   return bucket;
 }
 
-export async function storeImage(buffer, { filename, mimetype }) {
+export async function storeFile(buffer, { filename, mimetype }) {
   const bucket = getBucket();
   const id = new ObjectId();
 
@@ -27,6 +27,8 @@ export async function storeImage(buffer, { filename, mimetype }) {
 
   return id.toString();
 }
+
+export const storeImage = storeFile;
 
 export function openImageStream(id) {
   return getBucket().openDownloadStream(new ObjectId(id));
