@@ -142,7 +142,7 @@ export default function AdminProjects() {
                   type="button"
                   onClick={() => toggleTag(tag)}
                   className={`rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
-                    form.tags.includes(tag) ? 'bg-xblue text-blank' : 'bg-xghostwhite text-xstroke hover:bg-xarrow'
+                    form.tags.includes(tag) ? 'bg-xblue text-xaccent-text' : 'bg-xghostwhite text-xstroke hover:bg-xarrow'
                   }`}
                 >
                   {tag}

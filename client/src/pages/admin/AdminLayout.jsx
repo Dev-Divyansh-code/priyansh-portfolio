@@ -21,10 +21,10 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-dvh bg-xbg">
-      <header className="border-b border-xline bg-xstroke px-4 py-4 sm:px-6">
+      <header className="border-b border-xline bg-xheader px-4 py-4 sm:px-6">
         <div className="mx-auto flex max-w-6xl items-center justify-between">
           <div>
-            <h1 className="font-title text-lg font-semibold text-blank">Priyansh Admin</h1>
+            <h1 className="font-title text-lg font-semibold text-xheader-text">Priyansh Admin</h1>
             <p className="text-xs text-xghoststroke">Portfolio content manager</p>
           </div>
           <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ export default function AdminLayout() {
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-lg border border-xghoststroke/30 px-3 py-1.5 text-sm text-blank hover:bg-white/10"
+              className="rounded-lg border border-xheader-text/30 px-3 py-1.5 text-sm text-xheader-text hover:bg-white/10"
             >
               Logout
             </button>
@@ -53,7 +53,7 @@ export default function AdminLayout() {
                 end={item.end}
                 className={({ isActive }) =>
                   `flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
-                    isActive ? 'bg-xstroke text-blank' : 'bg-xsurface text-xstroke hover:bg-xarrow'
+                    isActive ? 'bg-xbtn text-xbtn-text' : 'bg-xsurface text-xstroke hover:bg-xarrow'
                   }`
                 }
               >

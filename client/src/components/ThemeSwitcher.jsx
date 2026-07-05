@@ -91,7 +91,7 @@ export default function ThemeSwitcher({ compact = false }) {
       <div className="fixed inset-0 z-[10000] sm:hidden" role="presentation">
         <button
           type="button"
-          className="absolute inset-0 bg-xstroke/40 backdrop-blur-[2px]"
+          className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"
           aria-label="Close theme menu"
           onClick={() => setOpen(false)}
         />

@@ -4,7 +4,7 @@ import Section from './Section';
 
 function Chip({ label }) {
   return (
-    <span className="rounded-full bg-xghostwhite px-3 py-1 text-xs font-semibold uppercase transition-colors group-hover:bg-xblue group-hover:text-blank">
+    <span className="rounded-full bg-xghostwhite px-3 py-1 text-xs font-semibold uppercase transition-colors group-hover:bg-xblue group-hover:text-xaccent-text">
       {label}
     </span>
   );

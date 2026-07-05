@@ -97,7 +97,7 @@ export default function Contact({ socials }) {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full rounded-xl bg-xstroke px-6 py-3 text-base font-semibold text-blank transition-colors hover:bg-xblue active:scale-[0.98] disabled:opacity-60 sm:w-auto"
+              className="w-full rounded-xl bg-xbtn px-6 py-3 text-base font-semibold text-xbtn-text transition-colors hover:bg-xblue hover:text-xaccent-text active:scale-[0.98] disabled:opacity-60 sm:w-auto"
             >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>

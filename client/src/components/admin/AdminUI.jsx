@@ -31,8 +31,8 @@ export function AdminTextarea({ className = '', ...props }) {
 
 export function AdminButton({ variant = 'primary', className = '', children, ...props }) {
   const variants = {
-    primary: 'bg-xstroke text-blank hover:bg-xblue',
-    danger: 'bg-xred text-blank hover:opacity-90',
+    primary: 'bg-xbtn text-xbtn-text hover:bg-xblue hover:text-xaccent-text',
+    danger: 'bg-xred text-white hover:opacity-90',
     ghost: 'border border-xline bg-xsurface text-xstroke hover:bg-xbg',
   };
 
@@ -50,7 +50,7 @@ export function AdminButton({ variant = 'primary', className = '', children, ...
 export function AdminAlert({ type = 'error', children }) {
   const styles = {
     error: 'border-xred/30 bg-xred/10 text-xred',
-    success: 'border-green-300 bg-green-50 text-green-700',
+    success: 'border-xline bg-xarrow text-xstroke',
   };
 
   return <div className={`rounded-xl border px-4 py-3 text-sm ${styles[type]}`}>{children}</div>;
