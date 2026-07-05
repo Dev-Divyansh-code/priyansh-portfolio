@@ -59,3 +59,12 @@ export const adminDeleteProject = (id) => client.delete(`/projects/${id}`).then(
 
 export const adminGetMessages = () => client.get('/messages').then((r) => r.data);
 export const adminDeleteMessage = (id) => client.delete(`/messages/${id}`).then((r) => r.data);
+
+export async function adminUploadImage(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await client.post('/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return res.data;
+}

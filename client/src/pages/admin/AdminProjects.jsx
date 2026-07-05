@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { adminCreateProject, adminDeleteProject, adminGetProjects, adminUpdateProject } from '../../api/admin';
-import { AdminAlert, AdminButton, AdminCard, AdminInput, AdminLabel } from '../../components/admin/AdminUI';
+import ImageField from '../../components/admin/ImageField';
+import { AdminAlert, AdminButton, AdminCard, AdminInput, AdminLabel, AdminTextarea } from '../../components/admin/AdminUI';
 
 const TAG_OPTIONS = ['premiere', 'aftereffects', 'davinci', 'wedding', 'corporate', 'reel'];
 
@@ -114,12 +115,23 @@ export default function AdminProjects() {
             <AdminInput value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
           </div>
           <div className="sm:col-span-2">
-            <AdminLabel>Thumbnail URL</AdminLabel>
-            <AdminInput value={form.thumbnail} onChange={(e) => setForm({ ...form, thumbnail: e.target.value })} required />
+            <ImageField
+              label="Thumbnail image"
+              value={form.thumbnail}
+              onChange={(thumbnail) => setForm({ ...form, thumbnail })}
+              placeholder="https://images.unsplash.com/..."
+              required
+            />
           </div>
           <div className="sm:col-span-2">
-            <AdminLabel>Links (one per line)</AdminLabel>
-            <AdminInput value={form.links} onChange={(e) => setForm({ ...form, links: e.target.value })} placeholder="https://youtube.com/..." />
+            <AdminLabel>Project links (one per line)</AdminLabel>
+            <AdminTextarea
+              rows={3}
+              value={form.links}
+              onChange={(e) => setForm({ ...form, links: e.target.value })}
+              placeholder="https://youtube.com/..."
+            />
+            <p className="mt-1 text-xs text-xghoststroke">YouTube, Vimeo, Instagram, and other links all work.</p>
           </div>
           <div className="sm:col-span-2">
             <AdminLabel>Tags</AdminLabel>

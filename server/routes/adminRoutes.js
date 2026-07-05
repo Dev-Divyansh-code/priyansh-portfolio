@@ -9,12 +9,23 @@ import {
 } from '../controllers/projectController.js';
 import { deleteMessage, getMessages } from '../controllers/contactController.js';
 import { createWork, deleteWork, getWork, getWorks, updateWork } from '../controllers/workController.js';
+import { uploadImageHandler } from '../controllers/uploadController.js';
 import { adminAuth } from '../middleware/adminAuth.js';
 import { asyncHandler } from '../middleware/asyncHandler.js';
+import { uploadImage } from '../middleware/upload.js';
 
 const router = Router();
 
 router.use(adminAuth);
+
+router.post('/upload', (req, res, next) => {
+  uploadImage(req, res, (err) => {
+    if (err) {
+      return res.status(400).json({ error: err.message || 'Upload failed' });
+    }
+    next();
+  });
+}, asyncHandler(uploadImageHandler));
 
 router.get('/profile', asyncHandler(getProfile));
 router.put('/profile', asyncHandler(updateProfile));

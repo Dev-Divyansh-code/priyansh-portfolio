@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { adminGetProfile, adminUpdateProfile } from '../../api/admin';
+import ImageField from '../../components/admin/ImageField';
 import { AdminAlert, AdminButton, AdminCard, AdminInput, AdminLabel, AdminTextarea } from '../../components/admin/AdminUI';
 
 const emptyForm = {
@@ -101,9 +102,13 @@ export default function AdminProfile() {
               <AdminLabel>Location</AdminLabel>
               <AdminInput value={form.location} onChange={update('location')} />
             </div>
-            <div>
-              <AdminLabel>Portrait URL</AdminLabel>
-              <AdminInput value={form.portrait} onChange={update('portrait')} placeholder="/assets/images/portrait.webp" />
+            <div className="sm:col-span-2">
+              <ImageField
+                label="Portrait image"
+                value={form.portrait}
+                onChange={(portrait) => setForm({ ...form, portrait })}
+                placeholder="/assets/images/portrait.webp or https://..."
+              />
             </div>
           </div>
         </AdminCard>

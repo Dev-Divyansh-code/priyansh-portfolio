@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { adminCreateWork, adminDeleteWork, adminGetWorks, adminUpdateWork } from '../../api/admin';
+import ImageField from '../../components/admin/ImageField';
 import { AdminAlert, AdminButton, AdminCard, AdminInput, AdminLabel } from '../../components/admin/AdminUI';
 
 const emptyWork = {
@@ -8,6 +9,8 @@ const emptyWork = {
   category: '',
   accent: '#4a90d9',
   icon: 'mdi:play-circle',
+  thumbnail: '',
+  videoUrl: '',
   order: 0,
   date: new Date().toISOString().slice(0, 10),
 };
@@ -43,6 +46,8 @@ export default function AdminWorks() {
       category: work.category,
       accent: work.accent || '#4a90d9',
       icon: work.icon || 'mdi:play-circle',
+      thumbnail: work.thumbnail || '',
+      videoUrl: work.videoUrl || '',
       order: work.order || 0,
       date: work.date ? new Date(work.date).toISOString().slice(0, 10) : '',
     });
@@ -115,6 +120,22 @@ export default function AdminWorks() {
             <AdminLabel>Icon (Iconify)</AdminLabel>
             <AdminInput value={form.icon} onChange={(e) => setForm({ ...form, icon: e.target.value })} placeholder="mdi:heart" />
           </div>
+          <div className="sm:col-span-2">
+            <ImageField
+              label="Cover image (optional)"
+              value={form.thumbnail}
+              onChange={(thumbnail) => setForm({ ...form, thumbnail })}
+              hint="Optional image — icon is used on the site if this is empty"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <AdminLabel>Video / project link (optional)</AdminLabel>
+            <AdminInput
+              value={form.videoUrl}
+              onChange={(e) => setForm({ ...form, videoUrl: e.target.value })}
+              placeholder="https://youtube.com/watch?v=..."
+            />
+          </div>
           <div>
             <AdminLabel>Order</AdminLabel>
             <AdminInput type="number" value={form.order} onChange={(e) => setForm({ ...form, order: e.target.value })} />
@@ -134,11 +155,16 @@ export default function AdminWorks() {
         <div className="space-y-3">
           {works.map((work) => (
             <div key={work._id} className="flex flex-col gap-3 rounded-xl border border-xline bg-xblank p-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
+              <div className="flex items-center gap-3">
+                {work.thumbnail && (
+                  <img src={work.thumbnail} alt="" className="h-12 w-12 rounded-lg object-cover" />
+                )}
+                <div>
                 <p className="font-semibold text-xstroke">{work.title}</p>
                 <p className="text-xs text-xghoststroke">
                   {work.category} · order {work.order}
                 </p>
+                </div>
               </div>
               <div className="flex gap-2">
                 <AdminButton variant="ghost" onClick={() => startEdit(work)}>
